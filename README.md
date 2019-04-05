@@ -18,12 +18,12 @@
 ## Vue项目建立
 
 ### Vue多页面项目
-
+multi-pages框架
 * Hello World
 * 请假申请
 
 ### Vue单页面项目
-
+single-page框架
 * Hello World
 * 请假申请
 
