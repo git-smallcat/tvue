@@ -7,7 +7,7 @@ let pages = function (opt) {
   let map = {};
   entryFiles.forEach((filePath) => {
     let filename = path.basename(path.dirname(filePath));
-    if (opt && !opt[filename]) {
+    if (!opt || !opt[filename]) {
       map[filename] = filePath;
     }
   });
@@ -18,5 +18,8 @@ let pages = function (opt) {
 };
 
 module.exports = {
-  pages: pages()
+  pages: pages(),
+  configureWebpack: {
+    devtool: 'source-map'
+  }
 };

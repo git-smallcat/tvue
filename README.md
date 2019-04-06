@@ -34,3 +34,6 @@ single-page框架
 ## ESlint介绍
 
 ## Vue移动端开发
+
+## 环境变量配置 
+.env
