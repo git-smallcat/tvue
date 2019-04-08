@@ -21,13 +21,19 @@
 multi-pages框架
 * Hello World
 * 请假申请
+* 权限管理介绍
 
 ### Vue单页面项目
 single-page框架
 * Hello World
 * 请假申请
+* 权限管理介绍
 
 ## UI库介绍
+
+## Vue Router
+
+## Vuex
 
 ## mockjs介绍
 
