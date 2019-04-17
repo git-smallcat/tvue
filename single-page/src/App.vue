@@ -1,13 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
-
+<script>
+  import axios from 'axios'
+  import {getRoutes} from './router/routerMap'
+  export default{
+    mounted(){
+      let self = this;
+      if (localStorage.getItem("role")){
+        axios.get('/json/Shiro.json').then(res => {// 拉取用户信息
+          const roles = res.data
+          let rolesKey = Object.keys(roles);
+        for(var i = 0; i < rolesKey.length; i++){
+          if(rolesKey[i] == self.$store.state.role){
+            let routes = getRoutes(roles[rolesKey[i]]);
+            self.$store.commit("setPowerMenu",routes);
+            self.$router.addRoutes(routes);
+          }
+        }
+      })
+      }
+    }
+  }
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
