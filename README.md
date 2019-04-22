@@ -5,15 +5,15 @@
 vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越来越多的项目实现了前后端分离的架构模式，为Vue的使用提供了契机。引自Vue官网的介绍【Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。】
 二、关于vue     
 关于vue配套的相关工具
-vue.js ：  核心
+vue.js ：核心
 VueRouter2 ：实现路由组织工具。
 webpack ：项目打包以及编译工具。
 nodejs ：前端开发环境。
 npm ：前端包管理器。
 axios ：ajax 接口请求工具。
 sass-loader 和 node-sass ：css 预处理。
-element ：基于  vue 的后台组件库。
-iview ：基于  vue  的另一套后台组件库。
+element ：基于vue的后台组件库。
+iview ：基于vue的另一套后台组件库。
 vue-cli ：vue  项目脚手架。一键安装 vue 全家桶的工具。
 三、目录认识
 （1）node_modules：存放项目使用的依赖包资源。
