@@ -105,6 +105,8 @@ multi-pages框架
 * Hello World
 * 请假申请
 * 权限管理介绍
+每个页面里面的created事件里面都调用了重置刷新token的一个事件
+在router里面每个跳转之前判断一次token是否存在，不存在就跳转登录。
 
 ### Vue单页面项目
 single-page框架
