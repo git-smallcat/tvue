@@ -748,14 +748,14 @@ single-page框架
     })
     启用了命名空间的 getter 和 action 会收到局部化的 getter，dispatch 和 commit。换言之，你在使用模块内容（module assets）时不需要在同一模块内额外添加空间名前缀。更改 namespaced 属性后不需要修改模块内的代码。
     模块动态注册：在 store 创建之后，你可以使用 store.registerModule 方法注册模块：
-    // 注册模块 `myModule` 
-    store.registerModule('myModule', { 
-        // ... 
-    })
-    // 注册嵌套模块 `nested/myModule` 
-    store.registerModule(['nested', 'myModule'], { 
-        // ... 
-    })
+        // 注册模块 `myModule` 
+        store.registerModule('myModule', { 
+            // ... 
+        })
+        // 注册嵌套模块 `nested/myModule` 
+        store.registerModule(['nested', 'myModule'], { 
+            // ... 
+        })
     之后就可以通过 store.state.myModule 和 store.state.nested.myModule 访问模块的状态。
     模块动态注册功能使得其他 Vue 插件可以通过在 store 中附加新模块的方式来使用 Vuex 管理状态。例如，vuex-router-sync 插件就是通过动态注册模块将 vue-router 和 vuex 结合在一起，实现应用的路由状态管理。
     你也可以使用 store.unregisterModule(moduleName) 来动态卸载模块。注意，你不能使用此方法卸载静态模块（即创建 store 时声明的模块）。
@@ -766,14 +766,65 @@ single-page框架
         2.在一个 store 中多次注册同一个模块
     如果我们使用一个纯对象来声明模块的状态，那么这个状态对象会通过引用被共享，导致状态对象被修改时 store 或模块间数据互相污染的问题。
     实际上这和 Vue 组件内的 data 是同样的问题。因此解决办法也是相同的——使用一个函数来声明模块状态（仅 2.3.0+ 支持）：
-    const MyReusableModule = { 
-        state () { 
-            return { 
-                foo: 'bar' 
-            } 
-        }, 
-        // mutation, action 和 getter 等等... 
-    }
+        const MyReusableModule = { 
+            state () { 
+                return { 
+                    foo: 'bar' 
+                } 
+            }, 
+            // mutation, action 和 getter 等等... 
+        }
+### Vuex严格模式
+    开启严格模式，仅需在创建 store 的时候传入 strict: true：
+        const store = new Vuex.Store({
+            // ...
+            strict: true
+        })
+    在严格模式下，无论何时发生了状态变更且不是由 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。
+#### 开发环境与发布环境
+    不要在发布环境下启用严格模式！严格模式会深度监测状态树来检测不合规的状态变更——请确保在发布环境下关闭严格模式，以避免性能损失。
+    类似于插件，我们可以让构建工具来处理这种情况：
+        const store = new Vuex.Store({
+            // ...
+            strict: process.env.NODE_ENV !== 'production'
+        })
+### Vuex表单处理
+    当在严格模式中使用 Vuex 时，在属于 Vuex 的 state 上使用 v-model 会比较棘手：
+        <input v-model="obj.message">
+    假设这里的 obj 是在计算属性中返回的一个属于 Vuex store 的对象，在用户输入时，v-model 会试图直接修改 obj.message。在严格模式中，由于这个修改不是在 mutation 函数中执行的, 这里会抛出一个错误。
+    用“Vuex 的思维”去解决这个问题的方法是：给 <input> 中绑定 value，然后侦听 input 或者 change 事件，在事件回调中调用 action:
+        <input :value="message" @input="updateMessage">
+        // ...
+        computed: {
+            ...mapState({
+                message: state => state.obj.message
+            })
+        },
+        methods: {
+            updateMessage (e) {
+                this.$store.commit('updateMessage', e.target.value)
+            }
+        }
+        下面是 mutation 函数：
+        // ...
+        mutations: {
+            updateMessage (state, message) {
+                state.obj.message = message
+        }}
+#### 双向绑定的计算属性
+    必须承认，这样做比简单地使用“v-model + 局部状态”要啰嗦得多，并且也损失了一些 v-model 中很有用的特性。另一个方法是使用带有 setter 的双向绑定计算属性：
+        <input v-model="message">
+        // ...
+        computed: {
+            message: {
+                get () {
+                    return this.$store.state.obj.message
+                },
+                set (value) {
+                    this.$store.commit('updateMessage', value)
+                }
+            }
+        }
 ## mockjs介绍
 
 ## ESlint介绍
