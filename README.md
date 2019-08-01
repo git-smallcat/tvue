@@ -87,7 +87,7 @@ vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越�
     5.最后运行 npm run dev或cnpm run dev
     6.最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
 ### Webstorm
-    首先安装vue插件，安装方法：
+    ```首先安装vue插件，安装方法：
     setting  -->  plugin  ，点击plugin，在内容部分的左侧输入框输入vue，会出现两个关于vue的插件，点击安装即可。安装完成后，就可以看到，新建文件时，会有vue文件的提示。
     设置vue新建文件模板:
     步骤： settings  -->  file and code templates .在内容区域左侧点击vue file，修改对应的模板内容即可。
@@ -99,6 +99,7 @@ vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越�
     安装依赖npm install(可以使用安装依赖 cnpm install) 
     最后运行 npm run dev或cnpm run dev
     最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
+    ```
 ## Vue项目建立
 
 ### Vue多页面项目
@@ -122,15 +123,15 @@ single-page框架
 ## Vuex
 
 ### 一、Vuex介绍
-    Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
+    ```Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
     vuex解决了组件之间共享同一状态的麻烦问题。当我们的应用遇到多个组件共享状态时，会需要：
     多个组件依赖于同一状态。传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。这需要你去学习下，vue编码中多个组件之间的通讯的做法。
     来自不同组件的行为需要变更同一状态。我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。
     缺点：这些模式非常脆弱，通常会导致无法维护的代码。由于vuex关键在于集中式存储管理。这意味着本来需要共享状态的更新是需要组件之间通讯的，而现在有了vuex，就组件就都和store通讯了。问题就自然解决了。
     这就是为什么官网再次会提到Vuex构建大型应用的价值。如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 store 模式 就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。
-
+```
 ### 二、Vuex开始
-    项目创建后，安装vuex，使用命令 npm install vuex --save
+ ```项目创建后，安装vuex，使用命令 npm install vuex --save
     执行npm run dev启动项目
     在项目的src目录下新建一个目录store，在该目录下新建一个index.js文件，我们用来创建vuex实例，然后在该文件中引入vue和vuex，创建Vuex.Store实例保存到变量store中，最后使用export default导出store。
     例：/store/index.js
@@ -149,7 +150,7 @@ single-page框架
           store,
             render: h => h(App)
         })
-
+```
 ### 三、Vuex项目结构
     Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
     应用层级的状态应该集中到单个 store 对象中。
@@ -172,7 +173,7 @@ single-page框架
     ├── cart.js # 购物车模块 
     └── products.js # 产品模块
 ### 四、Vuex核心概念
-在介绍Vuex的核心概念之前, 我使用`vue-cli`初始化了一个demo, 准备以代码的形式来说明Vuex的核心概念, 大家可以在github上的[master分支](https://github.com/Lee-Tanghui/Vuex-Demo)进行下载.这个demo分别有两个组件`ProductListOne.vue`和`ProductListTwo.vue`, 在`App.vue`的`datat`中保存着共有的商品列表, 代码和初始化的效果如下图所示:
+在介绍Vuex的核心概念之前, 使用`vue-cli`初始化了一个demo, 准备以代码的形式来说明Vuex的核心概念, 可以在github上的[master分支](https://github.com/Lee-Tanghui/Vuex-Demo)进行下载.这个demo分别有两个组件`ProductListOne.vue`和`ProductListTwo.vue`, 在`App.vue`的`datat`中保存着共有的商品列表, 代码和初始化的效果如下图所示:
 ![初始化效果][3]
 
 ```javascript
@@ -319,9 +320,9 @@ export default {
 
 #### **核心概念1: State**
 
-`state`就是Vuex中的公共的状态, 我是将`state`看作是所有组件的`data`, 用于保存所有组件的公共数据.
+`state`就是Vuex中的公共的状态, 将`state`看作是所有组件的`data`, 用于保存所有组件的公共数据.
 
-- 此时我们就可以把`App.vue`中的两个组件共同使用的data抽离出来, 放到`state`中,代码如下:
+- 此时就可以把`App.vue`中的两个组件共同使用的data抽离出来, 放到`state`中,代码如下:
 ```javascript
 //main.js
 import Vue from 'vue'
@@ -375,7 +376,7 @@ export default {
 > 到此处的Github仓库中代码为: [分支code01](https://github.com/Lee-Tanghui/Vuex-Demo/tree/code01)
 
 #### **核心概念2: Getters**
-我将`getters`属性理解为所有组件的`computed`属性, 也就是计算属性. vuex的官方文档也是说到可以将getter理解为store的计算属性, getters的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+将`getters`属性理解为所有组件的`computed`属性, 也就是计算属性. vuex的官方文档也是说到可以将getter理解为store的计算属性, getters的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 
 - 此时,我们可以在`main.js`中添加一个`getters`属性, 其中的`saleProducts`对象将`state`中的价格减少一半(除以2)
 ```javascript
@@ -423,7 +424,7 @@ export default {
 
 #### **核心概念3: Mutations**
 
-我将`mutaions`理解为`store`中的`methods`, `mutations`对象中保存着更改数据的回调函数,该函数名官方规定叫`type`, 第一个参数是`state`, 第二参数是`payload`, 也就会自定义的参数.
+将`mutaions`理解为`store`中的`methods`, `mutations`对象中保存着更改数据的回调函数,该函数名官方规定叫`type`, 第一个参数是`state`, 第二参数是`payload`, 也就会自定义的参数.
 
 - 下面,我们在`main.js`中添加`mutations`属性,其中`minusPrice`这个回调函数用于将商品的价格减少`payload`这么多, 代码如下:
 
