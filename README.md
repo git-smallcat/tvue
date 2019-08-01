@@ -620,11 +620,6 @@ store.state.b // -> moduleB 的状态
 
 --- 
 
-**【相关链接】**
-1. 本文代码地址: https://github.com/Lee-Tanghui/Vuex-Demo
-2. Vuex官方文档: https://vuex.vuejs.org/zh-cn/intro.html
-3. Vuex官方案例演示源码: https://github.com/vuejs/vuex/tree/dev/examples
-
   [1]: http://static.zybuluo.com/leeahui424/p0v57hlvqg6qr5t9kbae159u/image_1bqru9fcu1pq917q61ktk18cn1sov9.png
   [2]: http://static.zybuluo.com/leeahui424/mpwwmoxknvaqxe02wfzmufyr/image_1bqruul922q0146t1tjr1u91173bm.png
   [3]: http://static.zybuluo.com/leeahui424/mh643lwsmg2ufxhwbe4yf66h/image_1bqs3mi8no0iv0t18qh1er0dks2a.png
