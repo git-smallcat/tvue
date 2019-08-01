@@ -121,7 +121,7 @@ single-page框架
 
 ## Vuex
 
-### Vuex介绍
+### 一、Vuex介绍
     Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
     vuex解决了组件之间共享同一状态的麻烦问题。当我们的应用遇到多个组件共享状态时，会需要：
     多个组件依赖于同一状态。传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。这需要你去学习下，vue编码中多个组件之间的通讯的做法。
@@ -129,7 +129,7 @@ single-page框架
     缺点：这些模式非常脆弱，通常会导致无法维护的代码。由于vuex关键在于集中式存储管理。这意味着本来需要共享状态的更新是需要组件之间通讯的，而现在有了vuex，就组件就都和store通讯了。问题就自然解决了。
     这就是为什么官网再次会提到Vuex构建大型应用的价值。如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 store 模式 就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。
 
-### Vuex开始
+### 二、Vuex开始
     项目创建后，安装vuex，使用命令 npm install vuex --save
     执行npm run dev启动项目
     在项目的src目录下新建一个目录store，在该目录下新建一个index.js文件，我们用来创建vuex实例，然后在该文件中引入vue和vuex，创建Vuex.Store实例保存到变量store中，最后使用export default导出store。
@@ -150,7 +150,7 @@ single-page框架
             render: h => h(App)
         })
 
-### Vuex项目结构
+### 三、Vuex项目结构
     Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
     应用层级的状态应该集中到单个 store 对象中。
     提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
@@ -171,7 +171,7 @@ single-page框架
     └── modules 
     ├── cart.js # 购物车模块 
     └── products.js # 产品模块
-### Vuex核心概念
+### 四、Vuex核心概念
 #### state（单一状态树）
     Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSOT )”而存在。这也意味着，每个应用将仅仅包含一个 store 实例。单一状态树让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。
     在 Vue 组件中获得 Vuex 状态：由于 Vuex 的状态存储是响应式的，从 store 实例中读取状态最简单的方法就是在计算属性 中返回某个状态。
@@ -774,21 +774,21 @@ single-page框架
             }, 
             // mutation, action 和 getter 等等... 
         }
-### Vuex严格模式
+### 五、Vuex严格模式
     开启严格模式，仅需在创建 store 的时候传入 strict: true：
         const store = new Vuex.Store({
             // ...
             strict: true
         })
     在严格模式下，无论何时发生了状态变更且不是由 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。
-#### 开发环境与发布环境
+    开发环境与发布环境
     不要在发布环境下启用严格模式！严格模式会深度监测状态树来检测不合规的状态变更——请确保在发布环境下关闭严格模式，以避免性能损失。
     类似于插件，我们可以让构建工具来处理这种情况：
         const store = new Vuex.Store({
             // ...
             strict: process.env.NODE_ENV !== 'production'
         })
-### Vuex表单处理
+### 六、Vuex表单处理
     当在严格模式中使用 Vuex 时，在属于 Vuex 的 state 上使用 v-model 会比较棘手：
         <input v-model="obj.message">
     假设这里的 obj 是在计算属性中返回的一个属于 Vuex store 的对象，在用户输入时，v-model 会试图直接修改 obj.message。在严格模式中，由于这个修改不是在 mutation 函数中执行的, 这里会抛出一个错误。
@@ -811,7 +811,7 @@ single-page框架
             updateMessage (state, message) {
                 state.obj.message = message
         }}
-#### 双向绑定的计算属性
+    双向绑定的计算属性
     必须承认，这样做比简单地使用“v-model + 局部状态”要啰嗦得多，并且也损失了一些 v-model 中很有用的特性。另一个方法是使用带有 setter 的双向绑定计算属性：
         <input v-model="message">
         // ...
