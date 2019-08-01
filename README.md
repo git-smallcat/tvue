@@ -2,7 +2,8 @@
 # Vue基础教程
 ## 运行环境介绍与安装
 ### 一、vue认识
-```vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越来越多的项目实现了前后端分离的架构模式，为Vue的使用提供了契机。引自Vue官网的介绍【Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。】
+```内容
+vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越来越多的项目实现了前后端分离的架构模式，为Vue的使用提供了契机。引自Vue官网的介绍【Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。】
 ```
 ### 二、关于vue     
 关于vue配套的相关工具
@@ -47,7 +48,7 @@ npm run dev  命令中的  run  对应  package.json 中的：npm run dev
 ### node.js
 ```内容
 官方网址：https://nodejs.org
-简单的说 Node.js 就是运行在服务端的 JavaScript。<br>
+简单的说 Node.js 就是运行在服务端的 JavaScript。
 Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。
 Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
 ```
@@ -72,31 +73,31 @@ PS：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm。
 ### VsCode
 ```内容
 1.安装配置vscode (官网https://code.visualstudio.com/Download)
-   2.Visual Studio Code编辑器在Windows上安装比较简单，直接setup.exe。安装好后首次启动配置插件，插件配置必须联网，从网上下载。通过左边的扩展，然后搜索相应插件安装。
-      (1).安装vetur插件，是vue语法的高亮插件。
-      (2).安装eslint插件，是智能错误检测插件。
-      (3).安装prettier插件，是代码格式化工具。
-   3.配置:文件->首选项->设置
-      (1).代码错误实时提示
-        少写了一个空格，或者多写了一个分号，都能马上以醒目的波浪线提示出来，鼠标悬浮上去还有错误提示，双击波浪线的代码还会出现一个小灯泡，点击灯泡可以自动帮你修正代码格式：
-        我们可以找到编辑器左上角，依次打开 文件、 首选项、 设置，将下面配置加入到右边的用户设置中：
-                "eslint.validate": [
-               "javascript",
-               "javascriptreact",
+2.Visual Studio Code编辑器在Windows上安装比较简单，直接setup.exe。安装好后首次启动配置插件，插件配置必须联网，从网上下载。通过左边的扩展，然后搜索相应插件安装。
+   (1).安装vetur插件，是vue语法的高亮插件。
+   (2).安装eslint插件，是智能错误检测插件。
+   (3).安装prettier插件，是代码格式化工具。
+3.配置:文件->首选项->设置
+  (1).代码错误实时提示
+     少写了一个空格，或者多写了一个分号，都能马上以醒目的波浪线提示出来，鼠标悬浮上去还有错误提示，双击波浪线的代码还会出现一个小灯泡，点击灯泡可以自动帮你修正代码格式：
+     我们可以找到编辑器左上角，依次打开 文件、 首选项、 设置，将下面配置加入到右边的用户设置中：
+         "eslint.validate": [
+              "javascript",
+              "javascriptreact",
          {
-               "language": "vue",
-               "autoFix": true
+              "language": "vue",
+              "autoFix": true
          }
         ],
-      (2).ctrl+s保存时自动修正格式错误的js代码
-        在配置里加入下面的json:
-        "eslint.autoFixOnSave": true,
-      (3).保存时自动格式化
-        每次写完代码自己右键菜单格式化似乎有点麻烦，所以我们可以让它更智能用电，ctrl+s一保存就立马自动格式化:
-        "editor.formatOnSave": true,
-   4.安装依赖npm install(可以使用安装依赖 cnpm install) 
-   5.最后运行 npm run dev或cnpm run dev
-   6.最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
+  (2).ctrl+s保存时自动修正格式错误的js代码
+       在配置里加入下面的json:
+       "eslint.autoFixOnSave": true,
+  (3).保存时自动格式化
+       每次写完代码自己右键菜单格式化似乎有点麻烦，所以我们可以让它更智能用电，ctrl+s一保存就立马自动格式化:
+       "editor.formatOnSave": true,
+4.安装依赖npm install(可以使用安装依赖 cnpm install) 
+5.最后运行 npm run dev或cnpm run dev
+6.最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
 ```
 ### Webstorm
 ```内容
@@ -159,12 +160,12 @@ Vue.use(Vuex);                    //使用vuex
 然后我们在main.js文件中引入该文件，在文件里面添加 import store from ‘./store’;，再在vue实例全局引入store对象；
 例：/main.js
     import store from ‘./store’       //默认会找到store文件的index.js
-        new Vue({
-          el: '#app',
-          router,
-          store,
-            render: h => h(App)
-        })
+       new Vue({
+         el: '#app',
+         router,
+         store,
+           render: h => h(App)
+       })
 ```
 ### 三、Vuex项目结构
 ```内容
