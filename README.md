@@ -17,7 +17,8 @@
 * iview ：基于vue的另一套后台组件库。
 * vue-cli ：vue  项目脚手架。一键安装 vue 全家桶的工具。
 ### 三、目录认识
-```node_modules：存放项目使用的依赖包资源。
+```内容
+node_modules：存放项目使用的依赖包资源。
 build：项目最终发布资源。
 config：所有的配置。
 src：我们开发的主要文件资源，包括assess(资源包)官网下载的把logo放在里面了，components(演示的组件资源)我们自己也可以在里面尝试Demo，App.vue(项目入口文件，可以自行改造)，main.js(核心配置文件)全局配置也在这里。
@@ -28,7 +29,8 @@ package.json ：项目配置文件（管理本地的npm包）
 README.md：git版本管理服务文件
 ```
 ### 四、安装必备工具
-```node.js 前端开发环境（npm包管理器）在node.js官网下载安装：https://nodejs.org.
+```内容
+node.js 前端开发环境（npm包管理器）在node.js官网下载安装：https://nodejs.org.
 查看是否安装成功：node -v
 npm（Node Package Manager）包管理器是集成在node.js里，npm可以解决node.js的很多部署问题，包括 ：
   (1)允许用户从NPM服务器下载别人编写的第三方包到本地使用；
@@ -43,13 +45,15 @@ npm（Node Package Manager）包管理器是集成在node.js里，npm可以解�
 npm run dev  命令中的  run  对应  package.json 中的：npm run dev
 ```
 ### node.js
-```官方网址：https://nodejs.org
+```内容
+官方网址：https://nodejs.org
 简单的说 Node.js 就是运行在服务端的 JavaScript。<br>
 Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。
 Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
 ```
 ### npm
-```官方网址：http://npm.taobao.org
+```内容
+官方网址：http://npm.taobao.org
 npm是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
 允许用户从NPM服务器下载别人编写的第三方包到本地使用。
 允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。 
@@ -57,15 +61,17 @@ npm是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
 由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入 "npm -v" 来测试是否成功安装。命令出现版本提示表示安装成功;
 ```
 ### cnpm(可选)
-```官方网址：http://npm.taobao.org
-   安装：命令提示符执行npm install cnpm -g --registry=https://registry.npm.taobao.org<br>
-   注意：安装完后最好查看其版本号cnpm -v或关闭命令提示符重新打开，安装完直接使用有可能会出现错误\<br>
-   PS：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm。
+```内容
+官方网址：http://npm.taobao.org
+安装：命令提示符执行npm install cnpm -g --registry=https://registry.npm.taobao.org<br>
+注意：安装完后最好查看其版本号cnpm -v或关闭命令提示符重新打开，安装完直接使用有可能会出现错误\<br>
+PS：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm。
 ```
 ## 开发IDE搭建
 
 ### VsCode
-```1.安装配置vscode (官网https://code.visualstudio.com/Download)
+```内容
+1.安装配置vscode (官网https://code.visualstudio.com/Download)
    2.Visual Studio Code编辑器在Windows上安装比较简单，直接setup.exe。安装好后首次启动配置插件，插件配置必须联网，从网上下载。通过左边的扩展，然后搜索相应插件安装。
       (1).安装vetur插件，是vue语法的高亮插件。
       (2).安装eslint插件，是智能错误检测插件。
@@ -93,7 +99,8 @@ npm是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
    6.最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
 ```
 ### Webstorm
-```首先安装vue插件，安装方法：
+```内容
+首先安装vue插件，安装方法：
 setting  -->  plugin  ，点击plugin，在内容部分的左侧输入框输入vue，会出现两个关于vue的插件，点击安装即可。安装完成后，就可以看到，新建文件时，会有vue文件的提示。
 设置vue新建文件模板:
 步骤： settings  -->  file and code templates .在内容区域左侧点击vue file，修改对应的模板内容即可。
@@ -129,7 +136,8 @@ single-page框架
 ## Vuex
 
 ### 一、Vuex介绍
-```Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
+```内容
+Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
 vuex解决了组件之间共享同一状态的麻烦问题。当我们的应用遇到多个组件共享状态时，会需要：
 多个组件依赖于同一状态。传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。这需要你去学习下，vue编码中多个组件之间的通讯的做法。
 来自不同组件的行为需要变更同一状态。我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。
@@ -137,7 +145,8 @@ vuex解决了组件之间共享同一状态的麻烦问题。当我们的应用�
 这就是为什么官网再次会提到Vuex构建大型应用的价值。如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 store 模式 就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。
 ```
 ### 二、Vuex开始
-```项目创建后，安装vuex，使用命令 npm install vuex --save
+```内容
+项目创建后，安装vuex，使用命令 npm install vuex --save
 执行npm run dev启动项目
 在项目的src目录下新建一个目录store，在该目录下新建一个index.js文件，我们用来创建vuex实例，然后在该文件中引入vue和vuex，创建Vuex.Store实例保存到变量store中，最后使用export default导出store。
 例：/store/index.js
@@ -158,7 +167,8 @@ Vue.use(Vuex);                    //使用vuex
         })
 ```
 ### 三、Vuex项目结构
-```Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
+```内容
+Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
 应用层级的状态应该集中到单个 store 对象中。
 提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
 异步逻辑都应该封装到 action 里面。
