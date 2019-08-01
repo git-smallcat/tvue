@@ -290,8 +290,164 @@ single-page框架
     </template>
     这样我们就得到了count的值。
 #### Getter（计算）
+    Vuex 允许我们在 store 中定义“getter”（可以认为是 store 的计算属性）。Getter相当于vue中的computed计算属性，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算，这里我们可以通过定义vuex的Getter来获取，Getter可以用于监听、state中的值的变化，返回计算后的结果。
+    Getter 接受 state 作为其第一个参数：
+    const store = new Vuex.Store({ 
+        state: { 
+            todos: [ 
+                { id: 1, text: '...', done: true }, 
+                { id: 2, text: '...', done: false } 
+            ] 
+        }, 
+        getters: { 
+            doneTodos: state => { 
+                return state.todos.filter(todo => todo.done) 
+            } 
+        } 
+    })
+    通过属性访问：Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值。
+    store.getters.doneTodos // -> [{ id: 1, text: '...', done: true }]
+    Getter 也可以接受其他 getter 作为第二个参数：
+    getters: { 
+    // ...
+        doneTodosCount: (state, getters) => { 
+            return getters.doneTodos.length 
+        } 
+    }
+    store.getters.doneTodosCount // -> 1
+    我们可以很容易地在任何组件中使用它：
+    computed: { 
+        doneTodosCount () { 
+        return this.$store.getters.doneTodosCount 
+        } 
+    }
+    注意，getter 在通过属性访问时是作为 Vue 的响应式系统的一部分缓存其中的。
+    通过方法访问:你也可以通过让 getter 返回一个函数，来实现给 getter 传参。在你对 store 里的数组进行查询时非常有用。
+    getters: { 
+    // ... 
+        getTodoById: (state) => (id) => { 
+            return state.todos.find(todo => todo.id === id) 
+        } 
+    }
+    store.getters.getTodoById(2) // -> { id: 2, text: '...', done: false }
+    mapGetters 辅助函数:mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。
+    import { mapGetters } from 'vuex' 
+    export default {
+    // ... 
+        computed: { 
+        // 使用对象展开运算符将 getter 混入 computed 对象中 
+            ...mapGetters([ 
+                'doneTodosCount',
+                'anotherGetter',
+                // ... 
+            ]) 
+        } 
+    }
+    如果你想将一个 getter 属性另取一个名字，使用对象形式
+    mapGetters({ 
+    // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount` 
+        doneCount: 'doneTodosCount' 
+    })
+    例：/HelloWorld.vue
+    <template>
+        <div>
+            <h2>页面直接获取{{this.$store.state.count}}</h2>
+            <h2>Getters中计算后的值{{this.$store.getters.getStateCount}}</h2>
+        </div>
+    </template>
+    再修改index.js文件，其中getters中的getStateCount方法接收一个参数state，这个参数就是我们用来保存数据的那个对象。
+    例：/store/index.js
+    import Vue from ‘vue’               //引入vue
+    import Vuex from ‘vue’              //引入vuex
+    Vue.use(Vuex);                      //使用vuex
+    const store = new Vuex.Store({      //创建vuex实例
+        state:{
+            count:1
+        },
+        Getters:{
+            getStateCount:function(state){
+                return state.count+1;
+            }
+        }
+    })
+    export default store                //导出store
 #### Mutation
+    更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的事件类型 (type)和一个回调函数 (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数。
+    提交载荷（Payload）：你可以向 store.commit 传入额外的参数，即 mutation 的 载荷（payload）。在大多数情况下，载荷应该是一个对象，这样可以包含多个字段并且记录的 mutation 会更易读。
+    mutations: { 
+        increment (state, payload) { 
+        state.count += payload.amount
+        } 
+    }
+    store.commit('increment', { 
+        amount: 10 
+    })
+    对象风格的提交方式：提交 mutation 的另一种方式是直接使用包含 type 属性的对象。
+    store.commit({ 
+        type: 'increment',
+         amount: 10 
+    })
+    当使用对象风格的提交方式，整个对象都作为载荷传给 mutation 函数，因此 handler 保持不变：
+    mutations: { 
+        increment (state, payload) { 
+            state.count += payload.amount 
+        } 
+    }
+    Mutation 需遵守 Vue 的响应规则：既然 Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：
+        1.最好提前在你的 store 中初始化好所有所需属性。
+        2.当需要在对象上添加新属性时，你应该使用 Vue.set(obj, 'newProp', 123), 或者以新对象替换老对象。
+    Mutation 必须是同步函数：一条重要的原则就是要记住 mutation 必须是同步函数。
+    在组件中提交 Mutation：你可以在组件中使用 this.$store.commit('xxx') 提交 mutation，或者使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用（需要在根节点注入 store）。
+    我们现在Hello World.vue文件中添加两个按钮，一个加1，一个减1；这里我们点击按钮调用addFun（执行加的方法）和reductionFun（执行减法的方法），然后在里面直接提交mutations中的方法修改值。
+    例：/HelloWorld.vue
+    <template>
+        <div>
+            <h2>页面直接获取{{this.$store.state.count}}</h2>
+            <h2>Getters中计算后的值{{this.$store.getters.getStateCount}}</h2>
+            <p>count的值：{{this.$store.state.count}}</p>
+            <button @click=”addFun”>+</button>
+            <button @click=”reductionFun”>-</button>
+        </div>
+    </template>
+    <script>
+    export default{
+        name:’Helloworld’,
+        data(){},
+        methods:{
+            addFun(){
+                this.$store.commit(“add”);
+            },
+            reductionFun(){
+                this.$store.commit(“reduction”);
+            }
+        }
+    }
+    </script>
+    修改index.js文件，添加mutations，在mutations中定义两个函数，用来对count加1和减1，这里定义的两个方法就是上面commit提交的两个方法如下：
+    例：/store/index.js
+    import Vue from ‘vue’           //引入vue
+    import Vuex from ‘vue’          //引入vuex
+    Vue.use(Vuex);                    //使用vuex
+    const store = new Vuex.Store({    //创建vuex实例
+        state:{
+            count:1
+        },
+        Getters:{
+            getStateCount:function(state){
+                return state.count+1;
+        },
+        mutations:{
+            add(state){//上面定义的state对象
+            state.count = state.count+1;
+        },
+            reduction(state){//上面定义的state对象
+                state.count = state.count - 1;
+            }
+        }
+    })
+    export default store              //导出store
 #### Action
+
 #### Module
 ## mockjs介绍
 
