@@ -41,31 +41,34 @@ vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越�
     npm run dev  命令中的  run  对应  package.json 中的：npm run dev
 
 ### node.js
-    官方网址：https://nodejs.org
-    简单的说 Node.js 就是运行在服务端的 JavaScript。<br>
-    Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。\<br>
-    Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。\<br>
+```官方网址：https://nodejs.org
+   简单的说 Node.js 就是运行在服务端的 JavaScript。<br>
+   Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。
+   Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
+```
 ### npm
-    官方网址：http://npm.taobao.org
-    npm是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：<br>
-    允许用户从NPM服务器下载别人编写的第三方包到本地使用。 \<br>
-    允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。 \<br>
-    允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。\<br>
-    由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入 "npm -v" 来测试是否成功安装。命令出现版本提示表示安装成功;
+```官方网址：http://npm.taobao.org
+   npm是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+   允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+   允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。 
+   允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+   由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入 "npm -v" 来测试是否成功安装。命令出现版本提示表示安装成功;
+```
 ### cnpm(可选)
-    官方网址：http://npm.taobao.org
-    安装：命令提示符执行npm install cnpm -g --registry=https://registry.npm.taobao.org<br>
-    注意：安装完后最好查看其版本号cnpm -v或关闭命令提示符重新打开，安装完直接使用有可能会出现错误\<br>
-    PS：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm。
+```官方网址：http://npm.taobao.org
+   安装：命令提示符执行npm install cnpm -g --registry=https://registry.npm.taobao.org<br>
+   注意：安装完后最好查看其版本号cnpm -v或关闭命令提示符重新打开，安装完直接使用有可能会出现错误\<br>
+   PS：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm。
+```
 ## 开发IDE搭建
 
 ### VsCode
-    1.安装配置vscode (官网https://code.visualstudio.com/Download)
-    2.Visual Studio Code编辑器在Windows上安装比较简单，直接setup.exe。安装好后首次启动配置插件，插件配置必须联网，从网上下载。通过左边的扩展，然后搜索相应插件安装。
+```1.安装配置vscode (官网https://code.visualstudio.com/Download)
+   2.Visual Studio Code编辑器在Windows上安装比较简单，直接setup.exe。安装好后首次启动配置插件，插件配置必须联网，从网上下载。通过左边的扩展，然后搜索相应插件安装。
       (1).安装vetur插件，是vue语法的高亮插件。
       (2).安装eslint插件，是智能错误检测插件。
       (3).安装prettier插件，是代码格式化工具。
-    3.配置:文件->首选项->设置
+   3.配置:文件->首选项->设置
       (1).代码错误实时提示
         少写了一个空格，或者多写了一个分号，都能马上以醒目的波浪线提示出来，鼠标悬浮上去还有错误提示，双击波浪线的代码还会出现一个小灯泡，点击灯泡可以自动帮你修正代码格式：
         我们可以找到编辑器左上角，依次打开 文件、 首选项、 设置，将下面配置加入到右边的用户设置中：
@@ -83,23 +86,24 @@ vue.js是一个是对JavaScript进行封装的渐进式前端框架，目前越�
       (3).保存时自动格式化
         每次写完代码自己右键菜单格式化似乎有点麻烦，所以我们可以让它更智能用电，ctrl+s一保存就立马自动格式化:
         "editor.formatOnSave": true,
-    4.安装依赖npm install(可以使用安装依赖 cnpm install) 
-    5.最后运行 npm run dev或cnpm run dev
-    6.最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
+   4.安装依赖npm install(可以使用安装依赖 cnpm install) 
+   5.最后运行 npm run dev或cnpm run dev
+   6.最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
+```
 ### Webstorm
-    ```首先安装vue插件，安装方法：
-    setting  -->  plugin  ，点击plugin，在内容部分的左侧输入框输入vue，会出现两个关于vue的插件，点击安装即可。安装完成后，就可以看到，新建文件时，会有vue文件的提示。
-    设置vue新建文件模板:
+```首先安装vue插件，安装方法：
+setting  -->  plugin  ，点击plugin，在内容部分的左侧输入框输入vue，会出现两个关于vue的插件，点击安装即可。安装完成后，就可以看到，新建文件时，会有vue文件的提示。
+设置vue新建文件模板:
     步骤： settings  -->  file and code templates .在内容区域左侧点击vue file，修改对应的模板内容即可。
-    设置vue文件支持的编码格式(例如：支持的缩进是2):
-    步骤：settings --> code style,把code style 下面所有你认识、觉得会用到的内容都设置成2，当然也包括other file types，也是设置vue格式最关键的一步。
-    vue 使用的是es6语法， 所以要将javascript的版本改成es6:
+设置vue文件支持的编码格式(例如：支持的缩进是2):
+步骤：settings --> code style,把code style 下面所有你认识、觉得会用到的内容都设置成2，当然也包括other file types，也是设置vue格式最关键的一步。
+vue 使用的是es6语法， 所以要将javascript的版本改成es6:
     步骤：settings --> languages& frameworks -- > javascript ,选择javascript,修改内容区域的javascript language version: ECMAScript 6 即可。
-    如果你在修改vue文件，ctrl+s 之后，dev不自动编译，请参考http://www.cnblogs.com/ssrsblogs/p/6155747.html。
-    安装依赖npm install(可以使用安装依赖 cnpm install) 
-    最后运行 npm run dev或cnpm run dev
-    最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
-    ```
+如果你在修改vue文件，ctrl+s 之后，dev不自动编译，请参考http://www.cnblogs.com/ssrsblogs/p/6155747.html。
+安装依赖npm install(可以使用安装依赖 cnpm install) 
+最后运行 npm run dev或cnpm run dev
+最后给出提示，打开浏览器输入下方提示的地址就可以访问了。
+```
 ## Vue项目建立
 
 ### Vue多页面项目
@@ -123,7 +127,7 @@ single-page框架
 ## Vuex
 
 ### 一、Vuex介绍
-    ```Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
+```Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
     vuex解决了组件之间共享同一状态的麻烦问题。当我们的应用遇到多个组件共享状态时，会需要：
     多个组件依赖于同一状态。传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。这需要你去学习下，vue编码中多个组件之间的通讯的做法。
     来自不同组件的行为需要变更同一状态。我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。
@@ -131,18 +135,18 @@ single-page框架
     这就是为什么官网再次会提到Vuex构建大型应用的价值。如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 store 模式 就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。
 ```
 ### 二、Vuex开始
- ```项目创建后，安装vuex，使用命令 npm install vuex --save
-    执行npm run dev启动项目
-    在项目的src目录下新建一个目录store，在该目录下新建一个index.js文件，我们用来创建vuex实例，然后在该文件中引入vue和vuex，创建Vuex.Store实例保存到变量store中，最后使用export default导出store。
-    例：/store/index.js
-    import Vue from ‘vue’             //引入vue
-    import Vuex from ‘vue’            //引入vuex
-    Vue.use(Vuex);                    //使用vuex
-    const store = new Vuex.Store({    //创建vuex实例
-    })
-    export default store              //导出store
-    然后我们在main.js文件中引入该文件，在文件里面添加 import store from ‘./store’;，再在vue实例全局引入store对象；
-    例：/main.js
+```项目创建后，安装vuex，使用命令 npm install vuex --save
+执行npm run dev启动项目
+在项目的src目录下新建一个目录store，在该目录下新建一个index.js文件，我们用来创建vuex实例，然后在该文件中引入vue和vuex，创建Vuex.Store实例保存到变量store中，最后使用export default导出store。
+例：/store/index.js
+import Vue from ‘vue’             //引入vue
+import Vuex from ‘vue’            //引入vuex
+Vue.use(Vuex);                    //使用vuex
+  const store = new Vuex.Store({    //创建vuex实例
+  })
+  export default store              //导出store
+然后我们在main.js文件中引入该文件，在文件里面添加 import store from ‘./store’;，再在vue实例全局引入store对象；
+例：/main.js
     import store from ‘./store’       //默认会找到store文件的index.js
         new Vue({
           el: '#app',
@@ -152,12 +156,12 @@ single-page框架
         })
 ```
 ### 三、Vuex项目结构
-    Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
-    应用层级的状态应该集中到单个 store 对象中。
-    提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
-    异步逻辑都应该封装到 action 里面。
-    只要你遵守以上规则，如何组织代码随你便。如果你的 store 文件太大，只需将 action、mutation 和 getter 分割到单独的文件。
-    对于大型应用，我们会希望把 Vuex 相关代码分割到模块中。下面是项目结构示例：
+```Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
+应用层级的状态应该集中到单个 store 对象中。
+提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
+异步逻辑都应该封装到 action 里面。
+只要你遵守以上规则，如何组织代码随你便。如果你的 store 文件太大，只需将 action、mutation 和 getter 分割到单独的文件。
+对于大型应用，我们会希望把 Vuex 相关代码分割到模块中。下面是项目结构示例：
     ├── index.html 
     ├── main.js 
     ├── api 
@@ -172,8 +176,9 @@ single-page框架
     └── modules 
     ├── cart.js # 购物车模块 
     └── products.js # 产品模块
+```
 ### 四、Vuex核心概念
-在介绍Vuex的核心概念之前, 使用`vue-cli`初始化了一个demo, 准备以代码的形式来说明Vuex的核心概念, 可以在github上的[master分支](https://github.com/Lee-Tanghui/Vuex-Demo)进行下载.这个demo分别有两个组件`ProductListOne.vue`和`ProductListTwo.vue`, 在`App.vue`的`datat`中保存着共有的商品列表, 代码和初始化的效果如下图所示:
+在介绍Vuex的核心概念之前, 使用`vue-cli`初始化了一个demo, 准备以代码的形式来说明Vuex的核心概念, demo已上传可以查看，这个demo分别有两个组件`ProductListOne.vue`和`ProductListTwo.vue`, 在`App.vue`的`datat`中保存着共有的商品列表, 代码和初始化的效果如下图所示:
 ![初始化效果][3]
 
 ```javascript
@@ -319,9 +324,8 @@ export default {
 ```
 
 #### **核心概念1: State**
-
+Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSOT )”而存在。这也意味着，每个应用将仅仅包含一个 store 实例。单一状态树让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。
 `state`就是Vuex中的公共的状态, 将`state`看作是所有组件的`data`, 用于保存所有组件的公共数据.
-
 - 此时就可以把`App.vue`中的两个组件共同使用的data抽离出来, 放到`state`中,代码如下:
 ```javascript
 //main.js
@@ -372,10 +376,8 @@ export default {
 ```
 - 此时的页面如下图所示, 可以看到, 将公共数据抽离出来后, 页面没有发生变化.
 ![state效果][4]
-
-> 到此处的Github仓库中代码为: [分支code01](https://github.com/Lee-Tanghui/Vuex-Demo/tree/code01)
-
 #### **核心概念2: Getters**
+> Vuex 允许我们在 store 中定义`getters`（可以认为是 store 的计算属性）。Getters相当于vue中的computed计算属性，getters 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算，这里我们可以通过定义vuex的Getters来获取，Getters可以用于监听、state中的值的变化，返回计算后的结果。
 将`getters`属性理解为所有组件的`computed`属性, 也就是计算属性. vuex的官方文档也是说到可以将getter理解为store的计算属性, getters的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 
 - 此时,我们可以在`main.js`中添加一个`getters`属性, 其中的`saleProducts`对象将`state`中的价格减少一半(除以2)
@@ -419,12 +421,8 @@ export default {
 - 现在的页面中,Product List One中的每项商品的价格都减少了一半
 
 ![getters效果][5]
-
-> 到此处的Github仓库中代码为: [分支code02](https://github.com/Lee-Tanghui/Vuex-Demo/tree/code02)
-
 #### **核心概念3: Mutations**
-
-将`mutaions`理解为`store`中的`methods`, `mutations`对象中保存着更改数据的回调函数,该函数名官方规定叫`type`, 第一个参数是`state`, 第二参数是`payload`, 也就会自定义的参数.
+> 更改 Vuex 的 store 中的状态的唯一方法是提交 `mutations`。将`mutaions`理解为`store`中的`methods`, `mutations`对象中保存着更改数据的回调函数,该函数名官方规定叫`type`, 第一个参数是`state`, 第二参数是`payload`, 也就会自定义的参数.
 
 - 下面,我们在`main.js`中添加`mutations`属性,其中`minusPrice`这个回调函数用于将商品的价格减少`payload`这么多, 代码如下:
 
@@ -499,9 +497,6 @@ export default {
 - 添加按钮, 可以发现, Product List Two中的价格减少了2, 当然你可以自定义`payload`,以此自定义减少对应的价格.
 ![mutations效果][6]
 (Product List One中的价格没有发生变化, 是因为`getters`将价格进行了缓存)
-
-> 到此处的Github仓库中代码为: [分支code03](https://github.com/Lee-Tanghui/Vuex-Demo/tree/code03)
-
 #### **核心概念4: Actions**
 `actions` 类似于 `mutations`，不同在于：
 - `actions`提交的是`mutations`而不是直接变更状态
@@ -587,12 +582,9 @@ export default {
 
 - 添加按钮, 可以发现, Product List Two中的价格延迟2s后减少了5
 ![actions效果][7]
-
-> 到此处的Github仓库中代码为: [分支code04](https://github.com/Lee-Tanghui/Vuex-Demo/tree/code04)
-
 #### **核心概念5: Modules**
 
-> 由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。为了解决以上问题，Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割
+> 由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。为了解决以上问题，Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割。
 
 ```javascript
 const moduleA = {
@@ -618,9 +610,6 @@ const store = new Vuex.Store({
 store.state.a // -> moduleA 的状态
 store.state.b // -> moduleB 的状态
 ```
-
---- 
-
   [1]: http://static.zybuluo.com/leeahui424/p0v57hlvqg6qr5t9kbae159u/image_1bqru9fcu1pq917q61ktk18cn1sov9.png
   [2]: http://static.zybuluo.com/leeahui424/mpwwmoxknvaqxe02wfzmufyr/image_1bqruul922q0146t1tjr1u91173bm.png
   [3]: http://static.zybuluo.com/leeahui424/mh643lwsmg2ufxhwbe4yf66h/image_1bqs3mi8no0iv0t18qh1er0dks2a.png
