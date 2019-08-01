@@ -119,12 +119,54 @@ single-page框架
 ## Vue Router
 
 ## Vuex
+###Vuex介绍
 Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension ，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。就是说，之前在vue实例内做的操作和数据的计算现在都不再自己做了，而是交由对象store来做了。
 vuex解决了组件之间共享同一状态的麻烦问题。当我们的应用遇到多个组件共享状态时，会需要：
 1.多个组件依赖于同一状态。传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。这需要你去学习下，vue编码中多个组件之间的通讯的做法。
 2.来自不同组件的行为需要变更同一状态。我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。
 缺点：这些模式非常脆弱，通常会导致无法维护的代码。由于vuex关键在于集中式存储管理。这意味着本来需要共享状态的更新是需要组件之间通讯的，而现在有了vuex，就组件就都和store通讯了。问题就自然解决了。
 这就是为什么官网再次会提到Vuex构建大型应用的价值。如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 store 模式 就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。
+###Vuex开始
+项目创建后，安装vuex，使用命令 npm install vuex --save
+执行npm run dev启动项目
+在项目的src目录下新建一个目录store，在该目录下新建一个index.js文件，我们用来创建vuex实例，然后在该文件中引入vue和vuex，创建Vuex.Store实例保存到变量store中，最后使用export default导出store。
+例：/store/index.js
+import Vue from ‘vue’           //引入vue
+import Vuex from ‘vue’          //引入vuex
+Vue.use(Vuex);                    //使用vuex
+const store = new Vuex.Store({    //创建vuex实例
+})
+export default store              //导出store
+然后我们在main.js文件中引入该文件，在文件里面添加 import store from ‘./store’;，再在vue实例全局引入store对象；
+例：/main.js
+import store from ‘./store’     //默认会找到store文件的index.js
+new Vue({
+  el: '#app',
+  router,
+  store,
+  render: h => h(App)
+})
+###Vuex项目结构
+Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
+1.应用层级的状态应该集中到单个 store 对象中。
+2.提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
+3.异步逻辑都应该封装到 action 里面。
+只要你遵守以上规则，如何组织代码随你便。如果你的 store 文件太大，只需将 action、mutation 和 getter 分割到单独的文件。
+对于大型应用，我们会希望把 Vuex 相关代码分割到模块中。下面是项目结构示例：
+├── index.html 
+├── main.js 
+├── api 
+│    └── ... # 抽取出API请求 
+├── components 
+│    ├── App.vue 
+│    └── ... 
+└── store 
+├── index.js # 我们组装模块并导出 store 的地方 
+├── actions.js # 根级别的 action 
+├── mutations.js # 根级别的 mutation 
+└── modules 
+├── cart.js # 购物车模块 
+└── products.js # 产品模块
 ## mockjs介绍
 
 ## ESlint介绍
