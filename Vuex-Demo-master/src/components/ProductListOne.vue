@@ -6,16 +6,16 @@
                 <span class="name">{{ product.name }}</span>
                 <span class="price">${{ product.price }}</span>
             </li>
+            
         </ul>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['products'],
     data () {
         return {
-
+            products : this.$store.getters.saleProducts
         }
     }
 }
