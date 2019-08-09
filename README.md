@@ -675,7 +675,7 @@ const mutations = {
 }</script>
 ```
 6.局部参数
-虽然dispatch action和 commit mutations 可以全局使用，但是写在module 中的actions, mutations 和getters, 它们获得的默认参数却不是全局的，都是局部的，被限定在它们所在的模块中的。比如mutations和getters 会获得state 作为第一个默认参数，这个state参数，就是限定在mutations 和getters 所在模块的state对象，login 文件夹下的mutations 和getters 只会获取到当前index.js 中的 state 作为参数 。 actions 会获得一个context 对象作为参数，这个context 对象就是当前module 的实例，module 相当于一个小store.
+> 虽然dispatch action和 commit mutations 可以全局使用，但是写在module 中的actions, mutations 和getters, 它们获得的默认参数却不是全局的，都是局部的，被限定在它们所在的模块中的。比如mutations和getters 会获得state 作为第一个默认参数，这个state参数，就是限定在mutations 和getters 所在模块的state对象，login 文件夹下的mutations 和getters 只会获取到当前index.js 中的 state 作为参数 。 actions 会获得一个context 对象作为参数，这个context 对象就是当前module 的实例，module 相当于一个小store.
 那么怎样才能获取到根store 中的state 和 getters 呢？ Vuex 提供了 rootState, rootGetters 作为module 中 getters 中默认参数, actions中context 对象，也会多了两个属性,context.getters, context. rootState, 这些全局的默认参数，都排在局部参数的后面。
 我们在store.js中添加 state, getters:
 ```javascript
