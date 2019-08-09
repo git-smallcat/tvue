@@ -629,7 +629,14 @@ import Vue from 'vue'import App from './App.vue'
   }
  }
 }</script>
-组件中成功获取到状态。项目目录和展示如下
+组件中成功获取到状态。项目目录如下
+├── src 
+    ├── assets 
+    ├── login 
+    │    └── index.js 
+    ├── main.js 
+    ├── App.vue  
+    └── store.js
 ```
 
 5.通过actions, mutations 改变名字， 这就涉及到dispatch action, commit mutations, mutations 改变state.
@@ -646,8 +653,8 @@ const mutations = {
   }
 };
 ```
-> 在app.vue 中添加一个按钮：<button> change to json</button>， 点击时，dispatch 一个 action. 那在组件中怎么dispatch actions 呢？
-在模块中，state 是被限制到模块的命名空间下，需要命名空间才能访问。 但actions 和mutations, 其实还有 getters 却没有被限制，在默认情况下，它们是注册到全局命名空间下的，所谓的注册到全局命名空间下，其实就是我们访问它们的方式和原来没有module 的时候是一样的。比如没有module 的时候，this.store.dispatch(“changeName”)， 组件中的getters, 也是通过 this.$store.getters.module中getters 来获取。
+在app.vue 中添加一个按钮：<button> change to json</button>， 点击时，dispatch 一个 action. 那在组件中怎么dispatch actions 呢？
+> 在模块中，state 是被限制到模块的命名空间下，需要命名空间才能访问。 但actions 和mutations, 其实还有 getters 却没有被限制，在默认情况下，它们是注册到全局命名空间下的，所谓的注册到全局命名空间下，其实就是我们访问它们的方式和原来没有module 的时候是一样的。比如没有module 的时候，this.store.dispatch(“changeName”)， 组件中的getters, 也是通过 this.$store.getters.module中getters 来获取。
 ```javascript
 <template>
  <div id="app">
