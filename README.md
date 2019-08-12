@@ -521,7 +521,7 @@ router.push({ path: '/user', params: { userId }}) // -> /user
 
 声明式 | 编程式
 ---|---
-<router-link :to="..." >| 	router.replace(...)
+```<router-link :to="..." replace>```| ```	router.replace(...)```
 
 #### router.go(n)
 这个方法的参数是一个整数，意思是在 history 记录中向前或者后退多少步，类似``` window.history.go(n)```。
