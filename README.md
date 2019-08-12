@@ -198,7 +198,7 @@ npm run build
 ### 三、开始使用
 > 用 Vue.js + Vue Router 创建单页应用，是非常简单的。使用 Vue.js ，我们已经可以通过组合组件来组成应用程序，当你要把 Vue Router 添加进来，我们需要做的是，将组件 (components) 映射到路由 (routes)，然后告诉 Vue Router 在哪里渲染它们。下面是个基本例子：
 
-##### HTML
+#### HTML
 
 ```
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -218,7 +218,7 @@ npm run build
 </div>
 ```
 
-##### JavaScript
+#### JavaScript
 
 ```
 // 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)
@@ -311,7 +311,7 @@ const User = {
 
 除了 $route.params 外，$route 对象还提供了其它有用的信息，例如，$route.query (如果 URL 中有查询参数)、$route.hash 等等。你可以查看 API 文档 的详细说明。
 
-##### 响应路由参数的变化
+#### 响应路由参数的变化
 > 提醒一下，当使用路由参数时，例如从 /user/foo 导航到 /user/bar，原来的组件实例会被复用。因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。不过，这也意味着组件的生命周期钩子不会再被调用。
 
 复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch (监测变化) $route 对象：
@@ -339,7 +339,7 @@ const User = {
 }
 ```
 
-##### 捕获所有路由或 404 Not found 路由
+#### 捕获所有路由或 404 Not found 路由
 常规参数只会匹配被 / 分隔的 URL 片段中的字符。如果想匹配任意路径，我们可以使用通配符 (*)：
 
 
@@ -367,13 +367,108 @@ this.$router.push('/non-existing')
 this.$route.params.pathMatch // '/non-existing'
 ```
 
-##### 高级匹配模式
+#### 高级匹配模式
 vue-router 使用 path-to-regexp 作为路径匹配引擎，所以支持很多高级的匹配模式，例如：可选的动态路径参数、匹配零个或多个、一个或多个，甚至是自定义正则匹配。
 
-##### 匹配优先级
+#### 匹配优先级
 有时候，同一个路径可以匹配多个路由，此时，匹配的优先级就按照路由的定义顺序：谁先定义的，谁的优先级就最高。
 
-### 五、
+### 五、嵌套路由
+实际生活中的应用界面，通常由多层嵌套的组件组合而成。同样地，URL 中各段动态路径也按某种结构对应嵌套的各层组件，例如：
+
+```
+/user/foo/profile                     /user/foo/posts
++------------------+                  +-----------------+
+| User             |                  | User            |
+| +--------------+ |                  | +-------------+ |
+| | Profile      | |  +------------>  | | Posts       | |
+| |              | |                  | |             | |
+| +--------------+ |                  | +-------------+ |
++------------------+                  +-----------------+
+```
+
+借助 vue-router，使用嵌套路由配置，就可以很简单地表达这种关系。
+
+接着上节创建的 app：
+
+```
+<div id="app">
+  <router-view></router-view>
+</div>
+const User = {
+  template: '<div>User {{ $route.params.id }}</div>'
+}
+
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User }
+  ]
+})
+```
+
+这里的 <router-view> 是最顶层的出口，渲染最高级路由匹配到的组件。同样地，一个被渲染组件同样可以包含自己的嵌套 <router-view>。例如，在 User 组件的模板添加一个 <router-view>：
+
+
+```
+const User = {
+  template: `
+    <div class="user">
+      <h2>User {{ $route.params.id }}</h2>
+      <router-view></router-view>
+    </div>
+  `
+}
+```
+
+要在嵌套的出口中渲染组件，需要在 VueRouter 的参数中使用 children 配置：
+
+
+```
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User,
+      children: [
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 <router-view> 中
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          // 当 /user/:id/posts 匹配成功
+          // UserPosts 会被渲染在 User 的 <router-view> 中
+          path: 'posts',
+          component: UserPosts
+        }
+      ]
+    }
+  ]
+})
+```
+
+> 要注意，以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。
+
+你会发现，children 配置就是像 routes 配置一样的路由配置数组，所以呢，你可以嵌套多层路由。
+
+此时，基于上面的配置，当你访问 /user/foo 时，User 的出口是不会渲染任何东西，这是因为没有匹配到合适的子路由。如果你想要渲染点什么，可以提供一个空的子路由：
+
+```
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/user/:id', component: User,
+      children: [
+        // 当 /user/:id 匹配成功，
+        // UserHome 会被渲染在 User 的 <router-view> 中
+        { path: '', component: UserHome },
+
+        // ···其他子路由
+      ]
+    }
+  ]
+})
+```
+
 ## Vuex
 ### 一、Vuex介绍
 ```javascript
